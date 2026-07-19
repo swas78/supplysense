@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap');
+
+:root {
+  /* Colors */
+  --bg-cream: #F9F7F3; /* Warm cream background */
+  --text-ink: #1A1A1A; /* Dark ink text */
+  --text-muted: #595959;
+  --accent-red: #D9381E; /* One red accent */
+  --surface-color: #F9F7F3; /* Same as bg for neumorphism */
+  
+  /* Neumorphic Shadows (for warm cream bg) */
+  --shadow-light: #ffffff; /* Lighter than cream */
+  --shadow-dark: #e8e4db; /* Darker than cream */
+  
+  --shadow-elevated: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+  --shadow-soft: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  --shadow-inset: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+
+  --border-hairline: 1px solid rgba(26, 26, 26, 0.1);
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Fraunces', 'Garamond', 'Playfair Display', serif;
+  
+  /* Transitions */
+  --transition-fast: 200ms ease;
+  
+  /* Grid spacing */
+  --spacing-base: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream);
+  color: var(--text-ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Grainy Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--text-ink);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--text-ink);
+}
+
+button, .ghost-btn {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: 1.5px solid var(--text-ink);
+  color: var(--text-ink);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-base) var(--spacing-md);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+button:hover, .ghost-btn:hover {
+  background: var(--text-ink);
+  color: var(--bg-cream);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(217, 56, 30, 0.1);
+}
+
+::selection {
+  background-color: var(--text-ink);
+  color: var(--bg-cream);
+}
+
+/* Animations */
+@keyframes fadeAndRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-enter {
+  animation: fadeAndRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utilities */
+.text-accent {
+  color: var(--accent-red);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.duotone-bg {
+  background: linear-gradient(180deg, rgba(217, 56, 30, 0.05) 0%, rgba(249, 247, 243, 0) 100%);
+}
+
+@keyframes pulseAlert {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217, 56, 30, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(217, 56, 30, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217, 56, 30, 0); }
+}
+
+.pulse-alert {
+  animation: pulseAlert 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer-text {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, var(--text-muted) 4%, var(--text-ink) 25%, var(--text-muted) 36%);
+  background-size: 1000px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

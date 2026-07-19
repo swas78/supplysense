@@ -1,0 +1,50 @@
+.floatingNav {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(249, 247, 243, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  gap: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  transition: all var(--transition-medium);
+}
+
+.floatingNav.hidden {
+  transform: translate(-50%, 150%);
+  opacity: 0;
+}
+
+.pillLink {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pillLink:hover {
+  color: var(--text-ink);
+  background: rgba(26, 26, 26, 0.05);
+}
+
+.pillLink.active {
+  background-color: var(--text-ink);
+  color: var(--bg-cream);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pillLink.active:hover {
+  background-color: var(--text-ink);
+}

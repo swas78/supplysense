@@ -1,0 +1,46 @@
+.btn {
+  font-family: var(--font-sans);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+.ghost {
+  background: transparent;
+  border: var(--border-hairline);
+  color: var(--text-ink);
+}
+
+.ghost:hover {
+  background: var(--text-ink);
+  color: var(--bg-cream);
+}
+
+.primary {
+  background: var(--text-ink);
+  border: 1px solid var(--text-ink);
+  color: var(--bg-cream);
+}
+
+.primary:hover {
+  background: var(--bg-cream);
+  color: var(--text-ink);
+}
+
+.accent {
+  background: var(--accent-red);
+  border: 1px solid var(--accent-red);
+  color: var(--bg-cream);
+}
+
+.accent:hover {
+  background: transparent;
+  color: var(--accent-red);
+}

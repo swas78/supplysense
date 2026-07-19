@@ -1,0 +1,48 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-base);
+}
+
+.title {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.valueContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.value {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--text-ink);
+}
+
+.suffix {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.trend {
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trend.positive {
+  color: #2e7d32;
+}
+
+.trend.negative {
+  color: var(--accent-red);
+}
